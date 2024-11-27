@@ -1,0 +1,288 @@
+head, body {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+canvas {
+    display: block;
+    z-index: 0;
+}
+button {
+    position: absolute;
+    display: inline-block; 
+    z-index: 10;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #306bff; /* Couleur du bouton */
+    color: #F3F0F7;
+    border: line 2px;
+    border-color: #15187b;
+    border-radius: 50px;
+}
+
+button:hover {
+    background-color: #15187b;
+}
+#startButton {
+    
+    top: 75%; 
+    left: 50%; 
+    padding: 12px 22px;
+}
+#burger_menu {
+    
+    top: 15%; 
+    right: 5%;   
+    padding: 10px 20px;
+}
+#icon_menu{
+    height: 6vh; 
+    width: 3vw;
+}
+#home {
+    top: 5%; 
+    right: 5%;   
+    padding: 10px 20px;
+}
+#icon_home{
+    height: 6vh; 
+    width: 3vw;
+}
+.titre {
+    color: rgb(21, 24, 123);
+    background-color: rgba(243, 240, 247, 0.2);
+    border: solid rgba(35, 66, 189, 0.3);
+    display: inline-block; 
+    z-index: 5;
+}
+#titre_main_page{
+    margin-top: 25vh;
+    margin-left: 10vw;
+    padding: 2%;
+    padding-bottom: 1%;
+    text-align: center;
+    position: relative;
+    border-radius: 50px;
+}
+#soustitre_main_page{
+    color: rgb(35, 66, 189);
+    text-align: center;
+    font-size: x-large;
+    
+}
+#main_page {
+   
+    position: absolute;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+}
+.option {
+    
+    color: rgb(21, 24, 123);
+    background-color: rgba(243, 240, 247, 0.4);
+    z-index: 5;
+    text-align: center;
+    font-size: x-large;
+    display: block; 
+    padding: 9vh 2vw;
+    border-radius: 100px;
+}
+
+#portfolio_option{
+    float: inline-end;
+    padding: 11vh 2vw;
+    border-radius: 120px;
+    margin-top: 60vh;
+    margin-right: 10vw;
+    width : 10%;
+}
+#cv_option {
+    z-index: 6;
+
+    margin-top: 10vh;
+    margin-left: 15vw;
+    width : 8%;
+}
+#cv_option:hover{
+    background-color: rgba(243, 240, 247, 0.6);
+}
+#portfolio_option:hover{
+    background-color: rgba(243, 240, 247, 0.6);
+}
+
+.soustitre_cv_page{
+    color: rgb(21, 24, 123);
+    z-index: 7;
+    position: relative;
+    font-size: large;
+    display: block;
+    text-align: left;
+}
+#titre_cv_page_competence{
+    background-color: rgba(243, 240, 247, 0.4);
+    border-radius: 20px;
+    font-size: x-large;
+    text-align: center;
+    margin:10vh 75vw;
+    width:15vw;
+    padding-top: 2px;
+}
+#titre_cv_page_formation{
+    background-color: rgba(243, 240, 247, 0.4);
+    border-radius: 20px;
+    font-size: x-large;
+    text-align: center;
+    margin:-55vh 5vw;
+    width:57vw;
+    padding-top: 2px;
+    float:inline-start;
+}
+#titre_cv_page_exp{
+    background-color: rgba(243, 240, 247, 0.4);
+    border-radius: 20px;
+    font-size: x-large;
+    text-align: center;
+    float:inline-start;
+    margin:-100vh 5vw;
+    width: 30vw;
+    padding-top: 2px;
+}
+#titre_cv_page_contact{
+    background-color: rgba(243, 240, 247, 0.4);
+    border-color: #306bff;
+    border-radius: 80px;
+    font-size: x-large;
+    text-align: center;
+    float:inline-start;
+    margin:-95vh 45vw;
+    width: 20vw;
+    padding: 2vh;
+}
+.formation_txt{
+    font-size: medium;
+    color: rgb(104, 98, 111);
+    margin: 0;
+}
+.contact_txt{
+    font-size: large;
+    color:#5371be;
+    margin: 0;
+}
+#cv_page{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+#container_liste_competences{
+    padding: 5px;
+}
+li{
+    margin: 3px
+}
+#porfolio_page_mozaik{
+   
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top :0px;
+    z-index: 4;
+}
+#titre_mozaik{
+    padding: 1vh 1vw;
+    border-radius: 30px;
+    text-align: center;
+    margin: 12vh 8vw;
+    background-color: rgba(243, 240, 247, 0.4);
+    font-size: xxx-large;
+}
+#soustitre_mozaik{
+    font-size: xx-large;
+    color: rgb(35, 66, 189);
+    text-align: center;
+}
+img{
+    border-radius: 30px;
+    border: solid rgba(35, 66, 189, 0.3);
+    display:block;
+}
+#logo{
+    height : 20vh;
+    margin: -52vh 12vw;
+}
+#module{
+    height: 40vh;
+    margin-left: 17vw;
+    margin-top: -25vh;;
+}
+#trio{
+    height: 30vh;
+    margin: 45vh 4vw;
+    border-radius: 100px;    
+}
+#verre {
+    height: 25vh;
+    margin: -64vh 57vw;
+    border-radius: 50px; 
+}
+#mozaik_txt{
+    width : 35vw;
+    margin: -10vh 50vw;
+}
+#mozaik_comp{
+    width : 25vw;
+    margin: 12vh 55vw;
+}
+.txt{
+    font-size: large;
+    color: rgb(21, 24, 123);
+    margin: 0;
+    background-color: rgba(243, 240, 247, 0.4);
+    padding: 3vh;
+    border-radius: 30px;
+    border: solid rgba(35, 66, 189, 0.3);
+    text-align: justify;
+}
+
+#porfolio_page_gamongus{
+   
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top :0px;
+    z-index: 4;
+}
+#prez{
+    height: 30vh;
+    margin: 14vh 42vw;
+    border-radius: 50px;
+}
+#plan{
+    height: 40vh;
+    margin: -55vh 74vw;
+}
+#slide{
+    height: 40vh;
+    margin : -35vh 57vw;
+}
+#gamongus_txt{
+    width : 30vw;
+    margin: -30vh 6vw;
+}
+#gamongus_comp{
+    width: 29vw;
+    margin: 32vh 6.5vw;
+}
+#titre_gamongus{
+    padding: 1vh 1vw;
+    border-radius: 30px;
+    text-align: center;
+    margin: 12vh 42vw;
+    background-color: rgba(243, 240, 247, 0.4);
+    font-size: xxx-large;
+    width:40vw;
+}

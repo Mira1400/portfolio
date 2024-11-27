@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>initiation threeJS</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    
+</head>
+<body>
+    <div >
+        <div style="position: absolute; width: 100%; height: 100%;">
+            <canvas id="myCanvas"></canvas>
+            <button id="startButton" >
+                Start
+            </button>  
+            <button id="burger_menu">
+                <img id="icon_menu" src = "icon/menu_w.svg"/>
+            </button>
+            <button id="home">
+                <img id="icon_home" src = "icon/home.svg"/>
+            </button>
+        </div>
+        <div id="main_page">
+            <h1 class="titre" id="titre_main_page">Maëlle ROCHE<p id="soustitre_main_page">Présentation du parcours et des expériences</p> </h1>
+            
+            <p id="portfolio_option" class="option">Voir le Portfolio</p>
+            <p id="cv_option"  class="option">Voir le CV</p>
+        </div>
+        <div id="cv_page">
+            <h1 class="titre" id="titre_cv_page_competence">Competences
+                <div id="container_liste_competences">
+                    <ul class="soustitre_cv_page">
+                        <li>Python</li>
+                        <li>C#</li>
+                        <li>web development</li>
+                        <li>C/C++</li>
+                        <li>MySQL</li>
+                    </ul>
+                    <ul class="soustitre_cv_page">
+                        <li>Solidworks</li>
+                        <li>Kicad</li>
+                        <li>Photoshop</li>
+                        <li>Inkscape</li>
+                    </ul>
+                    <ul class="soustitre_cv_page">
+                        <li>Placage carbone sous vide</li>
+                        <li>Design de PCB</li>
+                        <li>Impression 3D </li>
+                        <li>Découpeuse laser </li>
+                        <li>CNC </li>
+                    </ul> 
+                    <ul class="soustitre_cv_page">
+                        <li>FRANCAIS Niveau C2</li>
+                        <li>ANGLAIS  Niveau B2</li>
+                        <li>ESPAGNOL Niveau A2</li>
+                    </ul>
+                </div>
+            </h1>
+            <h1 class="titre" id="titre_cv_page_formation">Formation
+                <div id="container_liste_formation">
+                    <ul class="soustitre_cv_page">
+                        <li>2023-2025 ....... Majeure Creative Technology à l&#8217;ESILV 
+                            <p class="formation_txt">prototypage et conception, 
+                            Modélisation 3D, design, électronique et capteurs, Python, Linux, C, 
+                            Communication, Interface Homme-Machine</p>
+                        </li>
+                        <li>Sep-Déc. 2022 ....... Semestre international à l&#8217;Université du Québec à Chicoutimi 
+                            (Canada)
+                            <p class="formation_txt">Structure de données, C++, Conception et programmation de 
+                                sites web, Sécurité des réseaux et du web, outils de programmation pour 
+                                la science de données, probabilités numériques</p>
+                        </li>
+                        <li>2020-2023 ....... Cycle préparatoire intégré à l&#8217;ESILV 
+                            <p class="formation_txt">Base de données, Datascience et IA, traitement du signal, Algèbre linéaire 
+                                et analyse numérique, analyse vectorielle, calcul intégral et différentiel, 
+                                probabilités et statistiques. 
+                                Conception assistée par ordinateur.</p>
+                        </li>
+                        
+                        <li>Nov 2021 ....... Certification en Design Thinking délivrée par Dthinking Academy. </li>
+                        <li>2019-2020 ....... Baccalauréat Général filière Scientifique, Science de la Vie et de la 
+                            Terre, avec une spécialité Informatique et Sciences du Numérique,  
+                            mention Très Bien. </li>
+                        <li> 2018-2019 ....... Médaille de bronze académique du concours National 
+                            Géosciences.  </li>
+                    </ul>
+                </div>
+            </h1>
+            <h1 class="titre" id="titre_cv_page_exp">Expérience professionnelle : 
+                <div id="container_liste_exp">
+                    <ul class="soustitre_cv_page">
+                        <li>Juin/Aout 2024 <p class="formation_txt">Ingénieur de recherche au Sensorimotor Interaction 
+                                Group, Max-Planck Institute à Saarbrücken, en 
+                                Allemagne. J'ai conçu et construit différents prototypes 
+                                pour des expérimentations en haptique et robotique. </p>
+                        </li>
+                        <li>Juin/Juillet 2022
+                            <p class="formation_txt">Stage dans la start-up COLORI en gestion des stocks, 
+                                aide à la création du site e-commerce et aide à la 
+                                conception d&#8217;activités pédagogiques. </p>
+                        </li>
+                        <li>Juillet 2021
+                            <p class="formation_txt">Contrat d&#8217;intérimaire d&#8217;un mois comme agent d&#8217;accueil à 
+                                la Société Générale. </p>
+                        </li>
+                    </ul>
+                </div>
+            </h1>
+            <h1 class="titre" id="titre_cv_page_contact">Contact : 
+                <div id="container_contact">
+                    <div class="soustitre_cv_page">
+                         <p>Email :<p class="contact_txt">maelle.roche@edu.devinci.fr </p>
+                        </p>
+                        <p>LinkedIn : <br />
+                            <a href="https://www.linkedin.com/in/maelle-roche" class="contact_txt">https://www.linkedin.com/in/maelle-roche</a>
+                            </p>
+                        
+                        </div>
+                </div>
+            </h1>
+                        
+        </div>
+        <div id="porfolio_page_mozaik">
+            <h1 class="titre" id="titre_mozaik">Mozaik<p id="soustitre_mozaik">Les dessous de verre modulaire en cuire</p></h1>
+            <p class="txt" id="mozaik_txt"> Mozaïk est un projet de dessous de verre
+                en cuir. J&#8217;ai pris en charge le design de la
+                marque (logo et charte graphique) ainsi
+                que le design de l&#8217;objet, notamment la
+                conception du motif intérieur. J&#8217;ai aussi
+                participé aux étapes de prototypages.
+                Les Mozaïk ont la capacité à s&#8217;assembler
+                à l&#8217;infini pour paver le plan.
+            </p>
+            <p class="txt" id="mozaik_comp"><b>Competences :</b> SolidWorks, Découpeuse
+                laser, Illustrator</p>
+            <img id="module" src="./img/mozaik_module.png" alt="mozaik assemblage">
+            <img id="logo" src="./img/logo.png" alt="logo mozaik">
+            <img id="trio" src="./img/mozaik_trio.jpg" alt="assemblage de trois mozaik">
+            <img id="verre" src="./img/mozaik_verre.png" alt="mozaik avec verre">
+
+
+        </div>
+        <div id="porfolio_page_gamongus">
+            <h1 class="titre" id="titre_gamongus">GAME BOY<p id="soustitre_mozaik">Les Game Boy capablent de jouer en réseaux</p></h1>
+            <p class="txt" id="gamongus_txt"> Pour ce projet, en équipe de trois nous
+                avons réalisé deux game boy pouvant jouer
+                à Pong en réseaux. J&#8217;ai pris en charge la
+                partie  design, modélisation et impression du
+                boîtier. Il est composé de deux parties
+                assemblées par des vis, de deux poignées
+                assemblées par des glissières et de huit
+                boutons.  L&#8217;intérieur du boitier permet le
+                maintien des cartes électroniques.
+            </p>
+            <p class="txt" id="gamongus_comp"><b>Competences :</b>  SolidWorks, Design de PCB, Impression 3D
+            </p>
+            
+            <img id="slide" src="./img/GU_assemblage.png" alt="game boy slide">
+            <img id="plan" src="./img/GU_plan.jpg" alt="vue éclatée">
+            <img id="prez" src="./img/GU.jpg" alt="presentation game boy">
+            
+           
+        </div>
+    </div>
+    
+   
+    <script type="module"  src="./script.js"> </script>
+    
+</body>
+</html>
