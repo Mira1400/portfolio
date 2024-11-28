@@ -1,37 +1,39 @@
 # Portfolio
 
-Ce projet est un site web personnel qui présente mon portfolio ainsi que mon CV. L'objectif est de naviguer de manière fluide à travers le contenu du site, en utilisant la molette de la souris pour changer de fenêtres et explorer les différentes sections.
-## Setup
+This project is a personal website showcasing my portfolio and resume. The goal is to provide smooth navigation through the site, using the mouse wheel to switch windows and explore different sections.
 
+## Quick Start
+Launch the page by clicking the link at the top right. You can navigate using the mouse wheel to move through the site and by clicking the on-screen buttons.
 
-## Fonctionnalités
+## Features
 
-### Navigation Interactive
-    Le site utilise une navigation par molette permettant de faire défiler les différentes sections du portfolio. Les animations de transition sont fluides et gérées via JavaScript et la bibliothèque TWEEN.
-    La caméra se déplace dynamiquement d'une section à l'autre, créant une expérience immersive et interactive.
-    Le bouton "home" en haut à droite permet de revenir rapidement à l'écran de démarrage.
+### Interactive Navigation
+The site uses a mouse wheel-based navigation system, allowing users to scroll through the various sections of the portfolio. Smooth transitions are handled via JavaScript and the TWEEN library.  
+The camera dynamically moves between sections, creating an immersive and interactive experience.  
+The "home" button at the top right provides quick access back to the starting screen.
 
-### Écran de Chargement
-    Un écran de chargement animé apparaît lors du chargement du site. 
-    Il est géré par CSS et JavaScript, assurant une transition fluide vers le contenu principal.
+### Loading Screen
+An animated loading screen appears while the site is loading.  
+It is managed with CSS and JavaScript, ensuring a smooth transition to the main content.
 
-### Sections Principales
-    Page d'Accueil : Introduction avec un titre principal et des boutons interactifs pour accéder aux autres sections.
-    Portfolio : Présentation de projets réalisés avec des images et des descriptions, sous forme de mosaïque.
-    CV : Affichage des compétences, formations, expériences professionnelles, et informations de contact.
+### Main Sections
+- **Home Page**: Introduction with a main title and interactive buttons to access other sections.
+- **Portfolio**: Display of completed projects with images and descriptions, organized in a mosaic layout.
+- **Resume**: Presentation of skills, education, professional experience, and contact information.
 
-### Technologies Utilisées
-    HTML : Structure du contenu, avec une organisation claire des différentes sections.
-    CSS : Styles et animations (mise en forme du contenus).
-    JavaScript : Gestion des interactions utilisateur, animations de la caméra, et transition des sections.
-    Three.js : Gestion des éléments 3D (nuages et bulles) et de l'environnement pour enrichir l'expérience visuelle.
-    Tween.js : Gestion des animations fluides.
-    Blender : Utilisé pour la création des modèles 3D des nuages.(selon ce tutoriel : )
+### Technologies Used
+- **HTML**: Structuring content with a clear organization of sections.
+- **CSS**: Styling and animations (layout and content formatting).
+- **JavaScript**: Managing user interactions, camera animations, and section transitions.
+- **Three.js**: Handling 3D elements (clouds and bubbles) and enhancing the visual environment.
+- **Tween.js**: Managing smooth animations.
+- **Blender**: Used to create the 3D cloud models (based on this tutorial: [YouTube Link](https://youtu.be/Cw8rIp5Bq0o)).
 
-### Création des Modèles 3D
-    Nuages : Les nuages ont été modélisés à l'aide de Blender.
-    Bulles : Les bulles sont créées à partir de sphères générées par Three.js.
+### Creation of 3D Models
+- **Clouds**: Modeled using Blender.
+- **Bubbles**: Created from spheres generated with Three.js.
 
-### Images et Photos
-    Toutes les photos utilisées dans le projet ont été prises par mes soins. Les images d'environnement sont retouchées et optimisées avant d’être intégrées dans le site.
-    Les images d'origines sont stockées dans le dossier sources.
+### Images and Photos
+All photos used in the project were taken by me. Environmental images are edited and optimized before being integrated into the site.  
+The original images are stored in the `sources` folder.
+
