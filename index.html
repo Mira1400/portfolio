@@ -18,13 +18,19 @@
 </head>
 <body>
     <div >
+        <div id="loading-screen">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    
         <div style="position: absolute; width: 100%; height: 100%;">
             <canvas id="myCanvas"></canvas>
             <button id="startButton" >
                 Start
             </button>  
             <button id="burger_menu">
-                <img id="icon_menu" src = "icon/menu_w.svg"/>
+               <img id="icon_menu" src = "icon/menu_w.svg"/>
             </button>
             <button id="home">
                 <img id="icon_home" src = "icon/home.svg"/>
@@ -143,10 +149,10 @@
             </p>
             <p class="txt" id="mozaik_comp"><b>Competences :</b> SolidWorks, Découpeuse
                 laser, Illustrator</p>
-            <img id="module" src="./img/mozaik_module.png" alt="mozaik assemblage">
-            <img id="logo" src="./img/logo.png" alt="logo mozaik">
-            <img id="trio" src="./img/mozaik_trio.jpg" alt="assemblage de trois mozaik">
-            <img id="verre" src="./img/mozaik_verre.png" alt="mozaik avec verre">
+            <img class="img" id="module" src="./img/mozaik_module.png" alt="mozaik assemblage">
+            <img class="img" id="logo" src="./img/logo.png" alt="logo mozaik">
+            <img class="img" id="trio" src="./img/mozaik_trio.jpg" alt="assemblage de trois mozaik">
+            <img class="img" id="verre" src="./img/mozaik_verre.png" alt="mozaik avec verre">
 
 
         </div>
@@ -165,11 +171,32 @@
             <p class="txt" id="gamongus_comp"><b>Competences :</b>  SolidWorks, Design de PCB, Impression 3D
             </p>
             
-            <img id="slide" src="./img/GU_assemblage.png" alt="game boy slide">
-            <img id="plan" src="./img/GU_plan.jpg" alt="vue éclatée">
-            <img id="prez" src="./img/GU.jpg" alt="presentation game boy">
-            
-           
+            <img class="img" id="slide" src="./img/GU_assemblage.png" alt="game boy slide">
+            <img class="img" id="plan" src="./img/GU_plan.jpg" alt="vue éclatée">
+            <img class="img" id="prez" src="./img/GU.jpg" alt="presentation game boy">
+        </div>
+        <div id="porfolio_page_BS">
+            <h1 class="titre" id="titre_BS">Bubble Sense<p id="soustitre_mozaik">Le Gant à retour tactile pour la réalité virtuelle</p></h1>
+            <p class="txt" id="BS_txt">  Ce projet tourne autour de la conception et de
+                la réalisation d&#8217;un gant pour permettre le
+                retour tactile et thermique en réalité virtuelle. Il
+                utilise différentes techniques de fabrication
+                comme l&#8217;impression 3D et le moulage en
+                silicone. Il consiste en la fabrication de bulles
+                de silicones fixée à l&#8217;extrémité du doigt capable
+                de se gonfler et de se dégonfler selon les
+                contacts avec l&#8217;environnement virtuel. Elles
+                sont activées par des servomoteurs. 
+                Au cours de ce projet j'ai également testé différentes 
+                formes de bulles afin de choisir la plus adaptée.
+            </p>
+            <p class="txt" id="BS_comp"><b>Competences :</b>  SolidWorks, Impression 3D,
+                Moulage silicone, Arduino, Unity               
+            </p>            
+            <img class="img" id="test" src="./img/BS_test.jpg" alt="banc de test">
+            <img class="img" id="global" src="./img/BS_global.jpg" alt="dispositif global">
+            <img class="img" id="servo" src="./img/BS_servo.jpg" alt="système d'actuation">
+            <img class="img" id="demo" src="./img/BS_demo.jpg" alt="démo en VR">
         </div>
     </div>
     
