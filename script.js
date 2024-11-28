@@ -66,12 +66,15 @@ window.addEventListener('resize', () => {
 //==============================================variables====================
 const homeButton= document.getElementById("home");
 homeButton.onclick = function(){
-  currentAnimationIndex = 0;
+  currentAnimationIndex = -1;
   isAnimating = true;
   const { to, duration } = {to: {x: 0,y: 40,z: -105}, duration:2000};
   animateCamera(to, duration).then(() => {
       isAnimating = false;
       console.log("pos ",camera.position,currentAnimationIndex);
+      currentAnimationIndex = 0;
+      startButton.disabled=false;
+      startButton.style.visibility="visible";
       });
     
 };
@@ -99,6 +102,16 @@ const portfolio_option = document.getElementById("portfolio_option");
 const cv_page = document.getElementById("cv_page");
 const portfolio_page_mozaik = document.getElementById("porfolio_page_mozaik");
 const portfolio_page_gamongus = document.getElementById("porfolio_page_gamongus");
+const porfolio_page_BS = document.getElementById("porfolio_page_BS");
+
+window.addEventListener("load", () => {
+  const loadingScreen = document.getElementById("loading-screen");
+
+  // Ajoute la classe pour déclencher la transition
+  loadingScreen.style.visibility="hidden";
+});
+
+
 
 cv_option.addEventListener('click', function(event) {
   //animationQueue [1]={ to: { x: -45, y: -10, z: 0 }, duration: 1000 };
@@ -144,30 +157,42 @@ function Page(stat,page){
     cv_page.style.visibility="hidden";
     portfolio_page_mozaik.style.visibility="hidden";
     portfolio_page_gamongus.style.visibility="hidden";
+    porfolio_page_BS.style.visibility="hidden";
   }
   else if(stat=="show" && page=="cv"){
     main_page.style.visibility="hidden";
     cv_page.style.visibility="visible";
     portfolio_page_mozaik.style.visibility="hidden";
     portfolio_page_gamongus.style.visibility="hidden";
+    porfolio_page_BS.style.visibility="hidden";
   }
   else if(stat=="show" && page=="portfolio"){
     main_page.style.visibility="hidden";
     cv_page.style.visibility="hidden";
     portfolio_page_mozaik.style.visibility="visible";
     portfolio_page_gamongus.style.visibility="hidden";
+    porfolio_page_BS.style.visibility="hidden";
   }
   else if(stat=="show" && page=="porfolio2"){
     main_page.style.visibility="hidden";
     cv_page.style.visibility="hidden";
     portfolio_page_mozaik.style.visibility="hidden";
     portfolio_page_gamongus.style.visibility="visible";
+    porfolio_page_BS.style.visibility="hidden";
+  }
+  else if(stat=="show" && page=="porfolio3"){
+    main_page.style.visibility="hidden";
+    cv_page.style.visibility="hidden";
+    portfolio_page_mozaik.style.visibility="hidden";
+    portfolio_page_gamongus.style.visibility="hidden";
+    porfolio_page_BS.style.visibility="visible";
   }
   else if(stat=="hide"){
     main_page.style.visibility="hidden";
     cv_page.style.visibility="hidden";
     portfolio_page_mozaik.style.visibility="hidden";
     portfolio_page_gamongus.style.visibility="hidden";
+    porfolio_page_BS.style.visibility="hidden";
   }
 }
 
@@ -192,6 +217,10 @@ function affichage(index){
       Page("show","porfolio2")
       break;
 
+    case 3:
+      Page("show","porfolio3")
+      break;
+
     default :
       console.log("here default", index);
       Page("hide");
@@ -212,6 +241,7 @@ function Path(){
       { to: { x: 0, y: 20, z: 0 }, duration: 1500 }, //premier menu, choix itinéraire
       { to: { x: 45, y: -10, z: 0 }, duration: 1000 }, // portfolio { x: 45, y: -10, z: 0 } 
       {to:{ x: 105, y: -60, z: -35 },duration:2000},
+      {to:{ x: 15, y: -120, z: -35 },duration:1000},
       {to:{ x: 65, y: -20, z: 0 },duration:1000} //ligne jamais joué, utile pour l'enchainement
     ];
   }
@@ -597,6 +627,8 @@ function onWheel(event) {
 
 // Ajouter l'événement pour la molette
 window.addEventListener('wheel', onWheel, { passive: false });
+
+
 
 // Fonction de rendu
 function animate() {
