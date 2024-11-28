@@ -1,8 +1,6 @@
 import * as THREE from "three";
-//import * as TWEEN from ''https://unpkg.com/@tweenjs/tween.js@25.0.0/dist/tween.esm.js'
 import { Tween, update, Easing } from 'https://unpkg.com/@tweenjs/tween.js@25.0.0/dist/tween.esm.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-//import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.001,10000); //full size of the window
@@ -11,7 +9,6 @@ camera.lookAt(new THREE.Vector3(0,0,0));
 camera.position.set(0,40,-105); // point de menu start
 
 const canvas= document.getElementById("myCanvas");
-//const controls = new OrbitControls(camera, canvas);
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true,
@@ -22,7 +19,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 
   // Charger une texture d'environnement pour les reflets
-  //https://github.com/mrdoob/three.js/tree/master/examples/textures/cube
 const envTexture = new THREE.CubeTextureLoader()
 .setPath('./img/light ajusted/')  // Dossier où se trouvent tes images cubemap
 .load([
@@ -41,6 +37,11 @@ scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5); // Couleur blanche, intensité 1
 scene.add(directionalLight);
 
+//création d'une lumière 3 points
+const light = new THREE.PointLight( 0xffffff, 0.2, 0, 0.01 );
+light.position.set(0,0,0 );
+scene.add( light );
+
 // Positionnement de la lumière directionnelle derrière la caméra
 const updateLightPosition = () => {
     // Place la lumière légèrement derrière la caméra
@@ -52,19 +53,19 @@ const updateLightPosition = () => {
 };
 updateLightPosition();
 
-
-window.addEventListener('resize', () => {
-    // Update the camera
-    camera.aspect =  window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    // Update the renderer
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-});
-
-//==============================================variables====================
+//==============================================variables et event listener ====================
+//variables
+const main_page = document.getElementById("main_page");
+const cv_option = document.getElementById("cv_option");
+const portfolio_option = document.getElementById("portfolio_option");
+const cv_page = document.getElementById("cv_page");
+const portfolio_page_mozaik = document.getElementById("porfolio_page_mozaik");
+const portfolio_page_gamongus = document.getElementById("porfolio_page_gamongus");
+const porfolio_page_BS = document.getElementById("porfolio_page_BS");
 const homeButton= document.getElementById("home");
+const startButton= document.getElementById("startButton");
+
+//gestion du bouton home
 homeButton.onclick = function(){
   currentAnimationIndex = -1;
   isAnimating = true;
@@ -79,10 +80,9 @@ homeButton.onclick = function(){
     
 };
 
-const startButton= document.getElementById("startButton");
+//gestion du bouton start pour lancer le site
 startButton.onclick = function()
 {
-  
   startButton.disabled=true;
   startButton.style.visibility="hidden";
 
@@ -96,25 +96,15 @@ startButton.onclick = function()
   });  
 }
 
-const main_page = document.getElementById("main_page");
-const cv_option = document.getElementById("cv_option");
-const portfolio_option = document.getElementById("portfolio_option");
-const cv_page = document.getElementById("cv_page");
-const portfolio_page_mozaik = document.getElementById("porfolio_page_mozaik");
-const portfolio_page_gamongus = document.getElementById("porfolio_page_gamongus");
-const porfolio_page_BS = document.getElementById("porfolio_page_BS");
-
+//gestion de l'écran de chargement
 window.addEventListener("load", () => {
   const loadingScreen = document.getElementById("loading-screen");
-
-  // Ajoute la classe pour déclencher la transition
   loadingScreen.style.visibility="hidden";
 });
 
 
-
+//gestion du bouton de choix du cv
 cv_option.addEventListener('click', function(event) {
-  //animationQueue [1]={ to: { x: -45, y: -10, z: 0 }, duration: 1000 };
   isCV=true;
   Path();
   console.log("cv clic");
@@ -124,7 +114,6 @@ cv_option.addEventListener('click', function(event) {
       isAnimating = false;
       console.log("pos ",camera.position,currentAnimationIndex);
        if(currentAnimationIndex!=animationQueue.length-2){
-        // Scroll vers le bas (suivant)
         previousAnimationIndex=currentAnimationIndex;
         console.log(currentAnimationIndex,"+1");
         currentAnimationIndex++;
@@ -132,8 +121,8 @@ cv_option.addEventListener('click', function(event) {
     });
 })
 
+//gestion du bouton de choix du portfolio
 portfolio_option.addEventListener('click', function(event) {
-  //animationQueue [1]={ to: { x: 45, y: -10, z: 0 }, duration: 1000 };
   isCV=false;
   Path();
   console.log("portfolio clic");
@@ -142,15 +131,26 @@ portfolio_option.addEventListener('click', function(event) {
   animateCamera(to, duration).then(() => {
     isAnimating = false;
     if(currentAnimationIndex!=animationQueue.length-2){
-      // Scroll vers le bas (suivant)
       previousAnimationIndex=currentAnimationIndex;
       console.log(currentAnimationIndex,"+1");
       currentAnimationIndex++;
      }
   });
-  
- 
 })
+
+//mise à jour de la taille du canva selon la taille de la fenêtre
+window.addEventListener('resize', () => {
+  // Update the camera
+  camera.aspect =  window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  // Update the renderer
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+});
+
+//========================================================display functions ====================================================
+
 function Page(stat,page){
   if(stat=="show" && page=="main"){
     main_page.style.visibility="visible";
@@ -228,6 +228,7 @@ function affichage(index){
    }
 }
 
+//function for update the path choose by the user
 function Path(){
   if(isCV==true){
     animationQueue = [
@@ -242,13 +243,13 @@ function Path(){
       { to: { x: 45, y: -10, z: 0 }, duration: 1000 }, // portfolio { x: 45, y: -10, z: 0 } 
       {to:{ x: 105, y: -60, z: -35 },duration:2000},
       {to:{ x: 15, y: -120, z: -35 },duration:1000},
-      {to:{ x: 65, y: -20, z: 0 },duration:1000} //ligne jamais joué, utile pour l'enchainement
+      {to:{ x: 65, y: -20, z: 0 },duration:1000} 
     ];
   }
 }
 //=================================================material definition ================================================
 
-// Définition du matériau pour la bulle (recyclé pour toutes les bulles)
+// Définition du matériau pour la bulle (réutilisé pour toutes les bulles)
 const bubbleMaterial = new THREE.MeshPhysicalMaterial({
   color: new THREE.Color(0xffffff),         // Couleur blanche de base, pour laisser l'iridescence visible
   roughness: 0.05,                          // Très peu de rugosité pour un effet brillant
@@ -267,28 +268,24 @@ const bubbleMaterial = new THREE.MeshPhysicalMaterial({
   envMap: envTexture,
 });
 
+// Définition du matériau pour les nuages (réutilisé pour toutes les nuages)
 const cloudMaterial = new THREE.MeshStandardMaterial({
   color: new THREE.Color(0xffffff), // Couleur blanche
   roughness: 0.9,                  // Surface rugueuse pour une diffusion douce
   metalness: 0.2,                    // Aucune propriété métallique
-  //transmission: 0.5,               // Transmission pour la lumière traversant le matériau
   opacity: 0.4,                    // Opacité plus faible pour un effet vaporeux
   transparent: true,               // Active la transparence
   depthWrite: false,               // Désactive depthWrite pour éviter l’effet d’opacité totale
-  //blending: THREE.AdditiveBlending, // Blending additif pour un effet vaporeux
-  //reflectivity: 0.5,
-  //side: THREE.DoubleSide          // Visible de tous les côtés
 });
 
-// =====================================================background bubble==============================
+// =========================================background bubble and clouds=====================================================
 
 // Fonction pour générer une position aléatoire dans le cube
 function getRandomPosition(range) {
-  //const range = 75; // Comme le cube est de 50x50x50, les positions vont de -25 à 25
-  return (Math.random() * 2 - 1) * range; // Position entre -75 et 25
+  return (Math.random() * 2 - 1) * range; 
 }
 
-//gros cube
+//Cube de bulle ambiant
 // Création de 10 bulles aléatoires
 for (let i = 0; i < 200; i++) {
   // Génération d'une taille de bulle aléatoire
@@ -299,27 +296,23 @@ for (let i = 0; i < 200; i++) {
 
   // Création de la bulle avec le matériau
   const sphereMesh = new THREE.Mesh(sphereGEO, bubbleMaterial);
-
-  // Position aléatoire dans le cube de 50x50x50
   sphereMesh.position.set(getRandomPosition(200), getRandomPosition(200)-200, getRandomPosition(200)+100);
 
   // Ajout de la bulle à la scène
   scene.add(sphereMesh);
 }
 
-// rideau start
+// rideau de bulle au demarrage
 // Création de 150 bulles aléatoires
 for (let i = 0; i < 250; i++) {
   // Génération d'une taille de bulle aléatoire
-  const radius = Math.random() * 1 + 0.5;  // Taille de la bulle entre 0.5 et 4.5
+  const radius = Math.random() * 1 + 0.5;  
 
   // Création de la géométrie de la bulle avec une taille variable
   const sphereGEO = new THREE.SphereGeometry(radius, 50, 50);
 
   // Création de la bulle avec le matériau
   const sphereMesh = new THREE.Mesh(sphereGEO, bubbleMaterial);
-
-  // Position aléatoire dans le cube de 50x50x50
   sphereMesh.position.set(getRandomPosition(30),20, getRandomPosition(25)-80);
 
   // Ajout de la bulle à la scène
@@ -327,11 +320,10 @@ for (let i = 0; i < 250; i++) {
 }
 
 
-//====================================================main page=============
+//====================================================chargement des models 3d de nuages========================================================
+// cloud on main page
 const loader = new GLTFLoader();
 let scale =200;
-
-    // Charge le modèle
     loader.load("./model/cloud3.gltf", 
       (gltf) => {
         // Une fois chargé, parcourez chaque objet pour appliquer le matériau
@@ -354,10 +346,9 @@ let scale =200;
         console.error('Erreur de chargement du modèle GLTF:', error);
     });
 
+    //cloud on cv page
     const loader2 = new GLTFLoader();
-let scale2 =200;
-
-    // Charge le modèle
+    let scale2 =200;
     loader2.load("./model/cloud3.gltf", 
       (gltf) => {
         // Une fois chargé, parcourez chaque objet pour appliquer le matériau
@@ -379,6 +370,8 @@ let scale2 =200;
     (error) => {
         console.error('Erreur de chargement du modèle GLTF:', error);
     });
+
+    // cloud on Mozaik page
     const loader3 = new GLTFLoader();
     let scale3 =100;
     
@@ -404,6 +397,8 @@ let scale2 =200;
         (error) => {
             console.error('Erreur de chargement du modèle GLTF:', error);
         });
+
+        //cloud on Game boy page
         const loader4 = new GLTFLoader();
         let scale4 =100;
         
@@ -431,16 +426,13 @@ let scale2 =200;
             });
     
 
+// bulles fixes presentes dans la scène
 
 // Création de la géométrie de la bulle avec une taille variable
 const sphereGEO = new THREE.SphereGeometry(2, 50, 50);
-
 // Création de la bulle avec le matériau
 const sphereMesh = new THREE.Mesh(sphereGEO, bubbleMaterial);
-
-// Position aléatoire dans le cube de 50x50x50
 sphereMesh.position.set(-8, 0, 8);
-
 // Ajout de la bulle à la scène
 scene.add(sphereMesh);
 
@@ -448,13 +440,9 @@ scene.add(sphereMesh);
 
 // Création de la géométrie de la bulle avec une taille variable
 const sphereGEO2 = new THREE.SphereGeometry(2.3, 50, 50);
-
 // Création de la bulle avec le matériau
 const sphereMesh2 = new THREE.Mesh(sphereGEO2, bubbleMaterial);
-
-// Position aléatoire dans le cube de 50x50x50
 sphereMesh2.position.set(7, 0, -7);
-
 // Ajout de la bulle à la scène
 scene.add(sphereMesh2);
 
@@ -462,56 +450,14 @@ scene.add(sphereMesh2);
 
 // Création de la géométrie de la bulle avec une taille variable
 const sphereGEO3 = new THREE.SphereGeometry(1.5, 50, 50);
-
 // Création de la bulle avec le matériau
 const sphereMesh3 = new THREE.Mesh(sphereGEO3, bubbleMaterial);
-
-// Position aléatoire dans le cube de 50x50x50
 sphereMesh3.position.set(5, 0, -9);
-
 // Ajout de la bulle à la scène
 scene.add(sphereMesh3);
 
-const light = new THREE.PointLight( 0xffffff, 0.2, 0, 0.01 );
-light.position.set(0,0,0 );
-scene.add( light );
 
-
-// ===================================================================== bouger la camera avec les touches du clavier ==============
-document.onkeydown = function (e){
-    
-    
-    switch( event.keyCode ) {
-        case 38: // up
-        camera.position.z += 5;
-        console.log(camera.position.toArray());
-        break;
-        case 40: // down
-        camera.position.z -= 5;
-        console.log(camera.position.toArray());
-        break;
-        case 39: // right
-        camera.position.x -= 5;
-        console.log(camera.position.toArray());
-        break;
-        case 37: // left
-        camera.position.x += 5;
-        console.log(camera.position.toArray());
-        break;
-        case 70: // forward
-        camera.position.y -= 5;
-        console.log(camera.position.toArray());
-        break;
-        case 66: // backward
-        camera.position.y += 5;
-        console.log(camera.position.toArray());
-        break;
-        default:
-            break;
-        }
-}
-
-//===========================================================tween scroll============================================
+//===========================================================gestion des animation avec la molette et TWEEN============================================
 
 
 // File d'attente des animations
@@ -520,12 +466,10 @@ let animationQueue = [
   { to: { x: -5, y: -10, z: 0 }, duration: 1000 }, // portfolio { x: 45, y: -10, z: 0 }    ou    cv { x: -45, y: -10, z: 0 }
   {to:{ x: -5, y: -10, z: 0 },duration:1000} //ligne jamais joué, utile pour l'enchainement
 ];
-let isCV =false;
 
-// Variables pour la gestion de la file d'attente
+let isCV =false;
 let currentAnimationIndex = 0;
 let previousAnimationIndex = currentAnimationIndex-1;
-console.log("start",currentAnimationIndex);
 let isAnimating = false;
 let isEnd = false;
 affichage("a");
@@ -543,7 +487,7 @@ function animateCamera(to, duration) {
       })
       .onComplete(() =>  
       {
-        console.log("croissant",currentAnimationIndex)
+        //affiche le texte 
         affichage(currentAnimationIndex);
         resolve();
       })
@@ -554,13 +498,14 @@ function animateCamera(to, duration) {
 // Gestionnaire pour la molette
 function onWheel(event) {
   if (isAnimating) return; // Empêcher l'animation si déjà en cours
+
+  //reviens à l'écran d'accueil à la fin du circuit
   if(event.deltaY > 0 && isEnd){
     isAnimating = true;
     
     const { to, duration } = {to: {x: 0,y: 40,z: -105}, duration:2000};
     animateCamera(to, duration).then(() => {
       isAnimating = false;
-      console.log("pos ",camera.position,currentAnimationIndex);
       affichage("a");
       startButton.disabled=false;
       startButton.style.visibility="visible";
@@ -571,6 +516,8 @@ function onWheel(event) {
  }
  else{
       isEnd=false;
+
+      //passe à la page suivante lorsque le scroll est descendant
       if (event.deltaY > 0 && currentAnimationIndex < animationQueue.length-1 ) {
       startButton.disabled=true;
       startButton.style.visibility="hidden";
@@ -578,11 +525,8 @@ function onWheel(event) {
         const { to, duration } = animationQueue[currentAnimationIndex];
         animateCamera(to, duration).then(() => {
           isAnimating = false;
-          console.log("pos ",camera.position,currentAnimationIndex);
           if(currentAnimationIndex!=animationQueue.length-2){
-            // Scroll vers le bas (suivant)
             previousAnimationIndex=currentAnimationIndex;
-            console.log(currentAnimationIndex,"+1");
             currentAnimationIndex++;
           }
           else{
@@ -590,31 +534,30 @@ function onWheel(event) {
           }
         });
       }
-        
+      
+      //passe à la page précédente lorsque le scroll est montant
       else if (event.deltaY < 0 && currentAnimationIndex > 0) {
-        // Scroll vers le haut (précédent)
-        startButton.disabled=true;
+      startButton.disabled=true;
       startButton.style.visibility="hidden";
       previousAnimationIndex=currentAnimationIndex;
-        console.log(currentAnimationIndex,"-1");
-          currentAnimationIndex--;
+        currentAnimationIndex--;
         isAnimating = true;
         const { to, duration } = animationQueue[currentAnimationIndex];
         animateCamera(to, duration).then(() => {
-          isAnimating = false;
-          console.log("pos ",camera.position,currentAnimationIndex); 
+        isAnimating = false;
         });
         
       
       }
+
+      // gestion de l'écran de démarrage lorsque l'utilisateur y revient en scrollant
         else if (event.deltaY < 0 && currentAnimationIndex== 0) {
             
-            //console.log("Scroll Up: Animation Index", currentAnimationIndex);
             isAnimating = true;
             const { to, duration } = {to: {x: 0,y: 40,z: -105}, duration:2000};
             animateCamera(to, duration).then(() => {
               isAnimating = false;
-              console.log("pos ",camera.position,currentAnimationIndex);
+              //reinitialise l'affichage
               affichage("a");
               startButton.disabled=false;
               startButton.style.visibility="visible";

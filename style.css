@@ -11,6 +11,8 @@ canvas {
     display: block;
     z-index: 0;
 }
+
+/*==============================================================style des bouton d'accueil==================================================================*/
 button {
     position: absolute;
     z-index: 10;
@@ -56,6 +58,7 @@ button:hover {
     position: auto;
     border: none;
 }
+/*==============================================================style de la page d'accueil==================================================================*/
 .titre {
     color: rgb(21, 24, 123);
     background-color: rgba(243, 240, 247, 0.2);
@@ -119,6 +122,7 @@ button:hover {
     background-color: rgba(243, 240, 247, 0.6);
 }
 
+/*==============================================================style de la page CV==================================================================*/
 .soustitre_cv_page{
     color: rgb(21, 24, 123);
     z-index: 7;
@@ -196,6 +200,8 @@ button:hover {
 li{
     margin: 3px
 }
+
+/*==============================================================style de la page mozaik==================================================================*/
 #porfolio_page_mozaik{
    
     width: 100vw;
@@ -269,6 +275,7 @@ li{
     position: absolute;
 }
 
+/*==============================================================style de la page game boy==================================================================*/
 #porfolio_page_gamongus{
    
     width: 100vw;
@@ -315,58 +322,7 @@ li{
     width:40vw;
 }
 
-/* Écran de chargement */
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #15187b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    z-index: 100;
-    opacity: 1; /* Opacité initiale */
-    pointer-events: all; /* Active l'écran pour bloquer les interactions */
-    transition: opacity 1s ease; /* Transition fluide sur l'opacité */
-}
-
-/* Les points */
-.dot {
-    width: 2rem;
-    height: 2rem;
-    background-color: white;
-    border-radius: 50%;
-    animation: bounce 1.5s infinite ease-in-out;
-}
-
-@keyframes bounce {
-    0%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-}
-
-.dot:nth-child(1) {
-    animation-delay: 0s;
-}
-.dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-.dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-#porfolio_page_BS{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top :0px;
-    z-index: 3;
-}
+/*==============================================================style de la page bubble sense==================================================================*/
 #titre_BS{
     padding: 0.5vh 0.5vw;
     border-radius: 30px;
@@ -410,4 +366,57 @@ li{
     /*margin : -68vh 6vw;*/
     top:12vh;
     left:6vw;
+}
+
+/*==============================================================style de l'écran de chargement==================================================================*/
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #15187b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    z-index: 100;
+    opacity: 1; /* Opacité initiale */
+    pointer-events: all; /* Active l'écran pour bloquer les interactions */
+    transition: opacity 1s ease; /* Transition fluide sur l'opacité */
+}
+
+
+.dot {
+    width: 2rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 50%;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+#porfolio_page_BS{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top :0px;
+    z-index: 3;
 }
